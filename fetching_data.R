@@ -14,4 +14,10 @@ zhongliang <- get("000930.SZ",envir = new.environment)
 head(zhongliang)
 # rename zhongliang's column names
 names(zhongliang) <- c("Open", "High", "Low", "Close", "Volume", "Adjusted")
-
+# getting financial reports
+getFinancials("000930.sz")
+# it does not work to get the financial report of zhong liang sheng hua
+viewFinancials(000930.sz.f)
+# it works on APPLE.
+getFinancials("AAPL")
+viewFinancials(AAPL.f)

@@ -83,6 +83,8 @@ name <- c("Open","High","Low","Close","Volume","Adjusted")
 names(AAPL) <- name
 # 每日股票收盘价的变化率，即计算后一天收盘价与前一天收盘价的价差并除以前天收盘价。
 change_rate_A <- (Next(AAPL$Close, 1)[-length(AAPL$Close)] - AAPL$Close[-length(AAPL$Close)])/AAPL$Close[-length(AAPL$Close)]
+# 用Delt（）计算变化率更加方便。
+change_rate_A <- Delt(Cl(AAPL),type=("arithmetic"))
 # 列出所有变化率大于2%或小于-2%的日期及具体数量。
 big_change_A <- change_rate_A[which(change_rate_A > 0.02 | change_rate_A < -0.02)]
 big_change_A
@@ -102,6 +104,7 @@ big_change_A[which(big_change_A == min(big_change_A))]
 最大值发生在2008年10月10日。10月3日，关于乔布斯的健康传言进一步打压苹果股票，到10月9日以到一个新低点，但由于10月14日苹果即将推出新的苹果笔记本产品以及10月21日公司即将发布新一季度财报等原因，股价至此开始强烈触底反弹。
 最小值发生在2014年6月6日，原因是苹果分拆股票。
 """
+MFST
 getSymbols("MSFT", src="yahoo")
 # 重新命名数据框列名
 name <- c("Open","High","Low","Close","Volume","Adjusted")
@@ -119,6 +122,44 @@ length(big_change_M)
 big_change_M[which(big_change_M == max(big_change_M))]
 # 列出其中的最小值
 big_change_M[which(big_change_M == min(big_change_M))]
+"""
+股价变化的最大值发生在2008年10月13日，原因同样是经济危机刚发生时股价急剧下挫引起的触底强烈反弹。
+最小值发生在2009年1月22日，原因是微软决定裁员5000人，再加上新一季财报表现不佳，净利润律同比减少了大约7%。
+"""
+ORCL
+getSymbols("ORCL", src="yahoo")
+# 计算股票收盘价变动率
+change_rate_O <- Delt(Cl(ORCL), type = ("arithmetic"))
+# 取出股价波动较大的日期和数值
+big_change_O <- change_rate_O[which(change_rate_O > 0.02 | change_rate_O < -0.02)]
+# 求有多少天股价波动较大
+length(big_change_O)
+# 求出股价波动最大值
+big_change_O[which(big_change_O == max(big_change_O))]
+# 求出股价波动最小值
+big_change_O[which(big_change_O == min(big_change_O))]
+"""
+最大值发生在2008年10月13日，原因同样是经济危机引起的股价急剧下挫后的触底反弹。
+最小值发生在2011年12月21日，原因是刚发布的财报成绩非常不理想，软件销量只增长
+3%，远远低于华尔街11%的预期，而去年同一季度的软件销量增长高达21%。
+正是由于去年同期增长过快，导致今年目标过高，难攀高峰。
+"""
+GOOG
+getSymbols("GOOG", src="google",from = "2007-01-01", to ="2014-08-28")
+change_rate_G <- Delt(Cl(GOOG), type = ("arithmetic"))
+big_change_G <- change_rate_G[which(change_rate_G > 0.02 | change_rate_G < -0.02)]
+length(big_change_G)
+big_change_G[which(big_change_G==max(big_change_G))]
+big_change_G[which(big_change_G==min(big_change_G))]
+"""
+最大值发生在2008年4月18日，google一季度财报表现强劲，净利润达130亿美元，同比增长高达30%。
+最小值发生在2008年9月29日，经济危机开始，股价当日发生急剧下挫。
+"""
+
+
+
+
+
 
 getSymbols("AAPL", src="yahoo")
 getSymbols("MSFT", src="yahoo")

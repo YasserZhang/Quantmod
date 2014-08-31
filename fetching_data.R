@@ -157,14 +157,39 @@ big_change_G[which(big_change_G==min(big_change_G))]
 """
 
 
+"""
+3)截取一段时间内这四家公司股价数据（注意分红派息除权对股价的影响），
+用R中的相关性分析判断股价之间的相关性，或者用R基础课程第八周所讲的MIC指标对其进行分析
+"""
 
+#为避开分红拆股等活动对股价的干扰，这里用除权后价格进行相关性分析。
 
+#首先，取得四只股票从2012年1月1日到2014年8月29日的行情数据。
 
+getSymbols("AAPL", src="yahoo", from = "2012-01-01", to = "2014-08-29")
+getSymbols("MSFT", src="yahoo", from = "2012-01-01", to = "2014-08-29")
+getSymbols("ORCL", src="yahoo", from = "2012-01-01", to = "2014-08-29")
+getSymbols("GOOGL", src="yahoo", from = "2012-01-01", to = "2014-08-29")
 
-getSymbols("AAPL", src="yahoo")
-getSymbols("MSFT", src="yahoo")
-getSymbols("ORCL", src="yahoo")
-getSymbols("GOOG", src="yahoo")
+# 然后，建立关于四只股票除权后价格的数据框。
+
+Adjusted_Price <- data.frame(AAPL = Ad(AAPL),MSFT = Ad(MSFT), ORCL = Ad(ORCL), GOOG = Ad(GOOGL))
+
+# 用cor（）命令计算四只股票价格的相关性系数。
+cor(Adjusted_Price)
+
+AAPL.Adjusted MSFT.Adjusted ORCL.Adjusted GOOGL.Adjusted
+AAPL.Adjusted      1.0000000        0.4433737     0.3436915      0.2276363
+MSFT.Adjusted      0.4433737       1.0000000     0.8234544      0.8886093
+ORCL.Adjusted      0.3436915       0.8234544     1.0000000      0.8982706
+GOOGL.Adjusted   0.2276363       0.8886093     0.8982706      1.0000000
+
+# 绘出关于四只股票的散点图
+
+plot(Adjusted_Price, cex=0.5) 
+
+#########################################
+
 tickers <- c("AAPL","MSFT","ORCL","GOOG")
 getSymbols(tickers,env=new.environment, src = "yahoo")
 chartSeries(AAPL, subset = "last 12 months")
@@ -195,11 +220,6 @@ big_change_A <- change_rate_A[which(change_rate_A > 0.02 | change_rate_A < -0.02
 min(big_change_A)
 summary(big_change_A)
 chartSeries(AAPL)
-
-"""
-3)截取一段时间内这四家公司股价数据（注意分红派息除权对股价的影响），
-用R中的相关性分析判断股价之间的相关性，或者用R基础课程第八周所讲的MIC指标对其进行分析
-"""
 
 
 # 从多种信息源里获得信息
@@ -300,11 +320,3 @@ to.weekly() #将OHLC数据转化为周数据
 to.monthly() #将PHLC数据转化为月数据
 periodicity() #返回数据的日期范围
 """
-
-
-
-
-
-
-
-

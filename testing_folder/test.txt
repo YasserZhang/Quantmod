@@ -1,0 +1,7 @@
+##How to create folder in github repository?
+
+git doesn't store empty folders. Just make
+sure there's a file in the folder like doc/foo.txt
+and run git add doc or git add doc/foo.txt and the
+folder will be added to your local repo once you've
+committed (and appear on github once you've pushed it)

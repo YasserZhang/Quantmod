@@ -1,38 +1,39 @@
-# ¼ÆËã²»Í¬½×¶ÎµÄÊÕÒæÂÊ
+#frequently used functions!
+# è®¡ç®—ä¸åŒé˜¶æ®µçš„æ”¶ç›Šç‡
 periodReturn()
-# ¼ÆËãÃ¿ÈÕÊÕÒæÂÊ
+# è®¡ç®—æ¯æ—¥æ”¶ç›Šç‡
 dailyReturn()
-# ¼ÆËãÃ¿ÖÜµÄÊÕÒæÂÊ
+# è®¡ç®—æ¯å‘¨çš„æ”¶ç›Šç‡
 weeklyReturn()
-# ¼ÆËãÃ¿ÔÂµÄÊÕÒæÂÊ
+# è®¡ç®—æ¯æœˆçš„æ”¶ç›Šç‡
 monthlyReturn()
-# ¼ÆËãÃ¿¸ö¼¾¶ÈµÄÊÕÒæÂÊ
+# è®¡ç®—æ¯ä¸ªå­£åº¦çš„æ”¶ç›Šç‡
 quarterlyReturn()
-# ¼ÆËãÄêÊÕÒæÂÊ
+# è®¡ç®—å¹´æ”¶ç›Šç‡
 annualReturn()
 yearlyReturn()
-# ¼ÆËãËùÓĞÖÖÀàµÄÊÕÒæÂÊ
+# è®¡ç®—æ‰€æœ‰ç§ç±»çš„æ”¶ç›Šç‡
 allReturn()
 
-# ¾ÙÀı
+# ä¸¾ä¾‹
 getSymbols("AAPL", src = "yahoo", from = "2013-10-01", to = "2013-10-23")
 periodReturn(AAPL, period = "daily")
 dailyReturn(AAPL)
-# ¼ÆËãÄ³¸öÊ±¶ÎµÄÃ¿ÈÕËãÊõĞÍÊÕÒæ
+# è®¡ç®—æŸä¸ªæ—¶æ®µçš„æ¯æ—¥ç®—æœ¯å‹æ”¶ç›Š
 periodReturn(AAPL,period="daily",subset="2013-10-01::2013-10-23",type="arithmetic")
-# ¼ÆËãÄ³¸öÊ±¶ÎµÄÃ¿ÈÕ¶ÔÊıĞÍÊÕÒæ
+# è®¡ç®—æŸä¸ªæ—¶æ®µçš„æ¯æ—¥å¯¹æ•°å‹æ”¶ç›Š
 periodReturn(AAPL,period="daily",subset="2013-10-01::2013-10-23",type="log")
 
-# »ù±¾Í¼ĞÎµÄ×÷Í¼¡ª¡ªÌõĞÎÍ¼£¬À¯ÖòÍ¼£¬ÏßÍ¼
+# åŸºæœ¬å›¾å½¢çš„ä½œå›¾â€”â€”æ¡å½¢å›¾ï¼Œèœ¡çƒ›å›¾ï¼Œçº¿å›¾
 chartTheme()
 chartSeries()
-# ÔÚÏÖÓĞÍ¼ĞÎÉÏĞŞ¸Ä
+# åœ¨ç°æœ‰å›¾å½¢ä¸Šä¿®æ”¹
 reChart()
 barChart()
 candleChart()
 lineChart()
 
-chartTheme() # ÉèÖÃÑÕÉ«
+chartTheme() # è®¾ç½®é¢œè‰²
 fg.col: foreground color
 bg.col: background color
 grid.col: grid color
@@ -52,27 +53,27 @@ up.dn.border: up after down bar/candle border color
 dn.dn.border: down after down bar/candle border color
 dn.up.border: down after up bar/candle border color
 
-# ¾ÙÀı
+# ä¸¾ä¾‹
 chartSeries(AAPL,name="AAPL CHART",subset="2013-10-01::2013-10-23")
-# ²»Í¬ĞÎÊ½µÄÇ÷ÊÆÍ¼
+# ä¸åŒå½¢å¼çš„è¶‹åŠ¿å›¾
 chartSeries(AAPL,name="AAPL BARCHART",subset="2013-10-01::2013-10-23",type="bars")
 chartSeries(AAPL,name="AAPL LINECHART",subset="2013-10-01::2013-10-23",type="line")
 chartSeries(AAPL,name="AAPL LINECHART",subset="2013-10-01::2013-10-23",type="candlesticks")
-# reChart¿ÉÒÔÔÚ²»ÖØĞÂÔÙ»­Ò»ÕÅĞÂµÄÍ¼µÄÇ°ÌáÏÂĞŞ¸ÄÒÑ¾­»­³öÀ´µÄÍ¼
+# reChartå¯ä»¥åœ¨ä¸é‡æ–°å†ç”»ä¸€å¼ æ–°çš„å›¾çš„å‰æä¸‹ä¿®æ”¹å·²ç»ç”»å‡ºæ¥çš„å›¾
 chartSeries(AAPL,name="AAPL BARCHART", subset="2013-10-01::2013-10-23",type="candlesticks")
 reChart(type="bars",subset="2013-10-05::2013-10-29", show.grid=TRUE)
-# ÌõĞÎÍ¼
+# æ¡å½¢å›¾
 barChart(AAPL,theme="black",subset="first 10 weeks",bar.type="ohlc")
 barChart(AAPL,theme="black",subset="first 10 weeks",bar.type="hlc")
-# À¯ÖòÍ¼
+# èœ¡çƒ›å›¾
 candleChart(AAPL,theme="white",subset="2013-10-05::2013-10-30",multi.col=T)
-# ÏßĞÍÍ¼
+# çº¿å‹å›¾
 lineChart(AAPL,theme="white",subset="2013-10-05::2013-10-30")
-# ÏßĞÎ£¬µã×´£¬»òÕßµãÏßÇ÷ÊÆÍ¼
+# çº¿å½¢ï¼Œç‚¹çŠ¶ï¼Œæˆ–è€…ç‚¹çº¿è¶‹åŠ¿å›¾
 lineChart(AAPL,theme="white",subset="2013-10-05::2013-10-30",line.type="l")
 lineChart(AAPL,theme="white",subset="2013-10-05::2013-10-30",line.type="p")
 lineChart(AAPL,theme="white",subset="2013-10-05::2013-10-30",line.type="b")
-# ¼¼Êõ·ÖÎöÍ¼º¯Êı
+# æŠ€æœ¯åˆ†æå›¾å‡½æ•°
 addADX()
 addATR()
 addBBands()
@@ -97,15 +98,15 @@ addWMA()
 addWPR()
 addZLEMA()
 
-# ¾ÙÀı
+# ä¸¾ä¾‹
 chartSeries(AAPL,name="AAPL CANDLECHART",subset="2013-06::2013-10-23",type="candlesticks")
 addADX()
 
 
 """
-ÏÂÔØApple£¬Microsoft£¬Oracle£¬Google¹«Ë¾2011-2012Äê½»Ò×ĞĞÇéÊı¾İ£¬·Ö±ğ»­³öÀ¯ÖòÍ¼ÒÔ¼°ADX×ÓÍ¼
-1 ÊÔ¶ÔADXÖ¸±ê½øĞĞ¼¼Êõ·ÖÎö£¬Ö¸³öÄ³¶ÎÊ±¼äÀï¸ù¾İADX¼°Ïà¹ØÖ¸±êÑĞ¶Á³öÀ´µÄ×ßÊÆÔ¤²â
-2 Çó³öÃ¿ÖÖ¹ÉÆ±ÔÚÉÏÊöÄê·İÄÚADXÖ¸±êÍ¬Ê±µÍÓÚDI+ºÍDI-µÄÊ±¼ä¶Î
+ä¸‹è½½Appleï¼ŒMicrosoftï¼ŒOracleï¼ŒGoogleå…¬å¸2011-2012å¹´äº¤æ˜“è¡Œæƒ…æ•°æ®ï¼Œåˆ†åˆ«ç”»å‡ºèœ¡çƒ›å›¾ä»¥åŠADXå­å›¾
+1 è¯•å¯¹ADXæŒ‡æ ‡è¿›è¡ŒæŠ€æœ¯åˆ†æï¼ŒæŒ‡å‡ºæŸæ®µæ—¶é—´é‡Œæ ¹æ®ADXåŠç›¸å…³æŒ‡æ ‡ç ”è¯»å‡ºæ¥çš„èµ°åŠ¿é¢„æµ‹
+2 æ±‚å‡ºæ¯ç§è‚¡ç¥¨åœ¨ä¸Šè¿°å¹´ä»½å†…ADXæŒ‡æ ‡åŒæ—¶ä½äºDI+å’ŒDI-çš„æ—¶é—´æ®µ
 """
 getSymbols(c("AAPL","MSFT","ORCL","GOOGL"),src="yahoo", from = "2011-01-01", to = "2012-12-31")
 chartSeries(AAPL, name = "AAPL", subset = "2011-01-01::2012-12-31")
@@ -127,6 +128,6 @@ index(oracl[which(oracl$ADX<oracl$DIp & oracl$ADX < oracl$DIn),])
 
 google <- ADX(GOOGL)
 index(google[which(google$ADX<google$DIp & google$ADX < google$DIn),])
-# ÒÔÉÏ¶ÔÓÚµÚ¶şÌâµÄ½â´ğÓĞÎó£¬²»Ó¦¸ÃÓÃADX(AAPL)À´»ñÈ¡ADXµÄ¼ÆËãÖµ£¬¶øÊÇÓÃÒÔÉÏ²ÎÊı£¬¼´½«Hi£¬Lo£¬ClÒ»Ò»ÂŞÁĞ¡£
+# ä»¥ä¸Šå¯¹äºç¬¬äºŒé¢˜çš„è§£ç­”æœ‰è¯¯ï¼Œä¸åº”è¯¥ç”¨ADX(AAPL)æ¥è·å–ADXçš„è®¡ç®—å€¼ï¼Œè€Œæ˜¯ç”¨ä»¥ä¸Šå‚æ•°ï¼Œå³å°†Hiï¼ŒLoï¼ŒClä¸€ä¸€ç½—åˆ—ã€‚
 apple <- ADX(cbind(Hi(AAPL),Lo(AAPL),Cl(AAPL)),n=14,maType="EMA",wilder=TRUE)
 apple[which(apple$ADX < apple$DIp & apple$ADX < apple$DIn),]
